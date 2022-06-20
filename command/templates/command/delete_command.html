@@ -1,0 +1,33 @@
+{% extends 'base/base.html' %}
+
+{% block title %}NF | Supprimer commande {% endblock %}
+
+
+{% block content %}
+    <a href="{% url 'product:home' %}"><i>home </i></a> - <i>Supprimer commande</i>
+
+    <div class="my-5">
+
+        <div class="command_detail_delete">
+            <!-- AFFICHER détail commande -->
+        </div>
+
+        <div class="row">
+            <div class="col-md-6 mx-auto">
+                <div class="card card-body text-center">
+
+                    <p>Voulez-vous supprimer cette commande?</p>
+
+                    <form action="{% url 'command:delete_command' item.id %}" method="POST">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-danger">Confirmer</button>
+                        <a href="{% url 'product:home' %}" class="btn btn-primary">Annuler</a>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+{% endblock %}
+

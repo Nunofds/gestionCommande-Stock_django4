@@ -1,0 +1,24 @@
+{% extends 'base/base.html' %}
+
+{% block title %}NF | Commande {% endblock %}
+
+
+{% block content %}
+    <a href="{% url 'product:home' %}"><i>home </i></a> - <i>Ajouter commande</i>
+
+    <h1>Ajouter commande</h1>
+
+    <div class="row">
+        <div class="col-md-8 mx-auto my-5 text-center">
+            <div class="card card-body">
+                <form action="" method="POST">
+                    {% csrf_token %}
+                    {{ form }}
+                    <button type="submit" class="btn btn-success">Confirmer</button>
+                    <a href="{% url 'product:home' %}" class="btn btn-warning">Annuler</a>
+                </form>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

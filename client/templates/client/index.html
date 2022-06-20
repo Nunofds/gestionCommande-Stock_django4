@@ -1,0 +1,78 @@
+{% extends 'base/base.html' %}
+
+{% block title %}NF | Détail client {% endblock %}
+
+{% block content %}
+    <a href="{% url 'product:home' %}"><i>home </i></a> - <i> client</i>
+
+    <h1>...........</h1>
+    <!-- CLIENTS LIST -->
+    <div class="row">
+        <div class="col-md">
+            <div class="card card-body">
+                <h5>Client: {{ client_id.name }}</h5>
+                <hr>
+                <a class="btn btn-outline-info  btn-sm btn-block my-1" href="">Modifier le Client</a>
+                <a class="btn btn-outline-danger  btn-sm btn-block my-1" href="">Supprimer le Client</a>
+            </div>
+        </div>
+
+        <div class="col-md">
+            <div class="card card-body">
+                <h5>Informations</h5>
+                <hr>
+                <p>Nom: {{ client_id.name }}</p>
+                <p>Telephone: {{ client_id.phone }}</p>
+            </div>
+        </div>
+
+        <!-- TOTAL COMMANDES -->
+        <div class="col-md">
+            <div class="card card-body">
+                <h5>Total des Commandes</h5>
+                <h1 class="my-3" style="text-align:center;padding:10px;color:gray;">{{ total_commandes }}</h1>
+            </div>
+        </div>
+    </div>
+    <!-- FILTER -->
+    <div class="row my-3">
+        <div class="col">
+            <div class="card card-body">
+                <form method="get">
+                    {{ myFilter.form }}
+                    <button class="btn btn-primary" type="submit">Search</button>
+              </form>
+            </div>
+        </div>
+
+    </div>
+    <!--  COMMANDS LIST  -->
+    <div class="row">
+        <div class="col-md">
+            <div class="card card-body">
+                <table class="table table-sm">
+                    <tr>
+                        <th>Produit</th>
+                        <th>Categorie</th>
+                        <th>Date de Commande</th>
+                        <th>Status</th>
+                        <th>Mise à Jour</th>
+                        <th>Supprimer</th>
+                    </tr>
+                    {% for commande in commande_client %}
+                    <tr>
+                        <td>{{ commande.product }}</td>
+                        <td></td>
+                        <td>{{ commande.creation_date }}</td>
+                        <td>{{ commande.statut }}</td>
+                        <td><a href="">Mise à Jour</a></td>
+                        <td><a href="">Supprimer</a></td>
+                    </tr>
+                    {% endfor %}
+
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+

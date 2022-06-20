@@ -1,0 +1,35 @@
+{% extends 'base/base.html' %}
+
+{% block title %}NF | Liste des commandes {% endblock %}
+
+
+{% block content %}
+
+    <section class="my-5">
+        <h1>Liste des commandes</h1>
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nom du client</th>
+                    <th>Nom du produit</th>
+                    <th>Statut du produit</th>
+                    <th>Date commande</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for commands in commands %}
+                <tr>
+                    <td>{{ commands.id }}</td>
+                    <td>{{ commands.client }}</td>
+                    <td>{{ commands.product }}</td>
+                    <td>{{ commands.statut }}</td>
+                    <td>{{ commands.creation_date }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </section>
+
+{% endblock %}

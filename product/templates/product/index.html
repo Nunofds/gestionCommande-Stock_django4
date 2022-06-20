@@ -1,0 +1,61 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+<!--    <a href="{% url 'product:home' %}"><i>home </i></a>-->
+
+    <div class="row my-5">
+        <div class="col-md-5">
+            <h5>Clients:</h5>
+            <hr>
+            <div class="card card-body">
+                <a class="btn btn-primary  btn-sm btn-block" href="">Créer Un Client</a>
+                <table class="table table-sm">
+                    <tr>
+                        <th>ID</th>
+                        <th>Client</th>
+                        <th>Telephone</th>
+                        <th>Détail</th>
+                    </tr>
+                    {% for client in clients %}
+                        <tr>
+                            <td>{{ client.id }}</td>
+                            <td>{{ client.name }}</td>
+                            <td>{{ client.phone }}</td>
+                            <td><a class="btn btn-sm btn-info" href="{% url 'client:list_client' client.id %}"> détail </a></td>
+                        </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+
+        <div class="col-md-7">
+            <h5>Toutes les Commandes</h5>
+            <hr>
+            <div class="card card-body">
+                <a class="btn btn-primary  btn-sm btn-block" href="{% url 'command:add_command' %}">Ajouter une Commande</a>
+                <table class="table table-sm">
+                    <tr>
+                        <th>Produit</th>
+                        <th>Client</th>
+                        <th>Date de la commande</th>
+                        <th>Status</th>
+                        <th>Mise à Jour</th>
+                        <th>Supprimer</th>
+                    </tr>
+                    {% for command in commands%}
+                        <tr>
+                            <td>{{ command.product.name }}</td>
+                            <td>{{ command.client.name }}</td>
+                            <td>{{ command.creation_date }}</td>
+                            <td>{{ command.statut }}</td>
+                            <td><a class="btn btn-sm btn-warning" href="{% url 'command:modify_command' command.id %}">Mettre à Jour</a></td>
+                            <td><a class="btn btn-sm btn-danger" href="{% url 'command:delete_command' command.id %}">Supprimer</a></td>
+                        </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
