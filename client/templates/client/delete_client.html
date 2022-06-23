@@ -1,0 +1,22 @@
+{% extends 'base/base.html' %}
+
+{% block title %}{% endblock %}
+
+{% block content %}
+
+    <div class="container h-100 my-5">
+
+        <div class="col">
+            <div class="col-md-6 card card-body mx-auto text-center">
+                <p>Voulez-vous supprimer ce client? </p>
+
+                <form action="" method="POST">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-outline-success">Confirmer</button>
+                    <a href="{% url 'product:home' %}" class="btn btn-outline-danger">Annuler</a>
+                </form>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

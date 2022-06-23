@@ -1,0 +1,50 @@
+{% extends 'base/base.html' %}
+
+
+{% block title %}NF | Nouveu client{% endblock %}
+
+{% block content %}
+
+    <div class="container h-100 my-5">
+
+        <h1 class="text-center my-5">Client</h1>
+
+        <div class="col">
+            <div class="col-md-6 card card-body mx-auto">
+
+                <form action="" method="POST" class="w-100">
+                    {% csrf_token %}
+                    <div class="input-group mb-5">
+                        <div class="input-group-append">
+                            <span class="input-group-text">Nom</span>
+                        </div>
+                        {{ form.name }}
+                    </div>
+                    <div class="input-group mb-5">
+                        <div class="input-group-append">
+                            <span class="input-group-text">Prénom</span>
+                        </div>
+                        {{ form.first_name }}
+                    </div>
+                    <div class="input-group mb-5">
+                        <div class="input-group-append">
+                            <span class="input-group-text">Email</span>
+                        </div>
+                        {{ form.email }}
+                    </div>
+                    <div class="input-group mb-5">
+                        <div class="input-group-append">
+                            <span class="input-group-text">Telephone</span>
+                        </div>
+                        {{ form.phone }}
+                    </div>
+
+                    <button class="btn btn-outline-success" type="submit">Confirmer</button>
+                    <a class="btn btn-outline-danger" href="{% url 'product:home' %}">annuler</a>
+                </form>
+            </div>
+        </div>
+
+	</div>
+
+{% endblock %}

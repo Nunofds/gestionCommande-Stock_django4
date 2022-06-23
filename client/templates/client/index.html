@@ -12,8 +12,8 @@
             <div class="card card-body">
                 <h5>Client: {{ client_id.name }}</h5>
                 <hr>
-                <a class="btn btn-outline-info  btn-sm btn-block my-1" href="">Modifier le Client</a>
-                <a class="btn btn-outline-danger  btn-sm btn-block my-1" href="">Supprimer le Client</a>
+                <a class="btn btn-outline-info  btn-sm btn-block my-1" href="{% url 'client:modify_client' client_id.id %}">Modifier le Client</a>
+                <a class="btn btn-outline-danger  btn-sm btn-block my-1" href="{% url 'client:delete_client' client_id.id %}">Supprimer le Client</a>
             </div>
         </div>
 
@@ -22,7 +22,10 @@
                 <h5>Informations</h5>
                 <hr>
                 <p>Nom: {{ client_id.name }}</p>
+                <p>Prénom: {{ client_id.first_name }}</p>
+                <p>Email: {{ client_id.email }}</p>
                 <p>Telephone: {{ client_id.phone }}</p>
+                <p>Date de création: {{ client_id.creation_date }}h</p>
             </div>
         </div>
 
@@ -65,8 +68,8 @@
                         <td></td>
                         <td>{{ commande.creation_date }}</td>
                         <td>{{ commande.statut }}</td>
-                        <td><a href="">Mise à Jour</a></td>
-                        <td><a href="">Supprimer</a></td>
+                        <td><a href="{% url 'client:update_client_command' commande.id %}">Mise à Jour</a></td>
+                        <td><a href="{% url 'client:delete_client_command' commande.id %}">Supprimer</a></td>
                     </tr>
                     {% endfor %}
 

@@ -1,14 +1,21 @@
 {% extends 'base/base.html' %}
 
 {% block content %}
-<!--    <a href="{% url 'product:home' %}"><i>home </i></a>-->
+
+    {% for message in messages %}
+        {% if message %}
+            <div class="alert alert-success mt-3">
+                <p id="login_messages" class=""><b>{{message}}</b> </p>
+            </div>
+        {% endif %}
+    {% endfor %}
 
     <div class="row my-5">
         <div class="col-md-5">
             <h5>Clients:</h5>
             <hr>
             <div class="card card-body">
-                <a class="btn btn-primary  btn-sm btn-block" href="">Créer Un Client</a>
+                <a class="btn btn-primary  btn-sm btn-block" href="{% url 'client:new_client' %}">Créer Un Client</a>
                 <table class="table table-sm">
                     <tr>
                         <th>ID</th>
@@ -29,7 +36,7 @@
         </div>
 
         <div class="col-md-7">
-            <h5>Toutes les Commandes</h5>
+            <h5>Toutes les Commandes:</h5>
             <hr>
             <div class="card card-body">
                 <a class="btn btn-primary  btn-sm btn-block" href="{% url 'command:add_command' %}">Ajouter une Commande</a>
@@ -48,8 +55,8 @@
                             <td>{{ command.client.name }}</td>
                             <td>{{ command.creation_date }}</td>
                             <td>{{ command.statut }}</td>
-                            <td><a class="btn btn-sm btn-warning" href="{% url 'command:modify_command' command.id %}">Mettre à Jour</a></td>
-                            <td><a class="btn btn-sm btn-danger" href="{% url 'command:delete_command' command.id %}">Supprimer</a></td>
+                            <td><a class="btn btn-sm btn-outline-warning" href="{% url 'command:modify_command' command.id %}">Mettre à Jour</a></td>
+                            <td><a class="btn btn-sm btn-outline-danger" href="{% url 'command:delete_command' command.id %}">Supprimer</a></td>
                         </tr>
                     {% endfor %}
                 </table>
